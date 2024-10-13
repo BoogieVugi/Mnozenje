@@ -5,22 +5,21 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Unesite pozitivan cijeli broj N: ");
-        int N = scanner.nextInt();
-
-        if (N <= 0) {
-            System.out.println("Molimo unesite pozitivan cijeli broj.");
-        } else {
-            int suma = 0;
-
-            for (int i = 1; i <= N; i++) {
-                suma += i;
-            }
+        Scanner unos = new Scanner(System.in);
 
 
-            System.out.println("Suma brojeva od 1 do " + N + " je: " + suma);
-        }
+       System.out.println (" Upiši cijeli broj: ");
+       int broj = unos.nextInt();
+
+       broj = Math.abs(broj);
+
+       int brojZnamenki = String.valueOf(broj).length();
+       if (broj == 0) {
+           brojZnamenki = 1;
+       }
+
+       System.out.println("Broj znamenki cijelog broja je: " + brojZnamenki);
+
+
     }
 }
-
