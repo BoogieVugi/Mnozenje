@@ -5,21 +5,29 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Scanner unos = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.print("Unesite veličinu polja: ");
+        int size = scanner.nextInt();
 
-       System.out.println (" Upiši cijeli broj: ");
-       int broj = unos.nextInt();
+        // Kreiranje polja prema unesenoj veličini
+        int[] array = new int[size];
 
-       broj = Math.abs(broj);
+        // Unos elemenata u polje
+        System.out.println("Unesite " + size + " elemenata polja:");
+        for (int i = 0; i < size; i++) {
+            array[i] = scanner.nextInt();
+        }
 
-       int brojZnamenki = String.valueOf(broj).length();
-       if (broj == 0) {
-           brojZnamenki = 1;
-       }
+        // Pronalaženje maksimalne vrijednosti
+        int max = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
 
-       System.out.println("Broj znamenki cijelog broja je: " + brojZnamenki);
-
-
+        // Ispis maksimalne vrijednosti
+        System.out.println("Maksimalna vrijednost u polju je: " + max);
     }
 }
