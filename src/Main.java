@@ -1,33 +1,55 @@
+import com.sun.source.tree.SwitchExpressionTree;
+
+import java.lang.runtime.SwitchBootstraps;
 import java.sql.SQLOutput;
 import java.util.Scanner;
+import java.util.List;
+import java.util.Scanner;
+import java.util.ArrayList;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        public class Main {
+            public static void main(String[] args) {
 
-        System.out.print("Unesite veličinu polja: ");
-        int size = scanner.nextInt();
+                List<Integer> numbers = new ArrayList<>();
+                Scanner scanner = new Scanner(System.in);
 
-        // Kreiranje polja prema unesenoj veličini
-        int[] array = new int[size];
 
-        // Unos elemenata u polje
-        System.out.println("Unesite " + size + " elemenata polja:");
-        for (int i = 0; i < size; i++) {
-            array[i] = scanner.nextInt();
-        }
+                System.out.println("Unesite brojeve (za kraj unesite 'kraj'):");
 
-        // Pronalaženje maksimalne vrijednosti
-        int max = array[0];
-        for (int i = 1; i < array.length; i++) {
-            if (array[i] > max) {
-                max = array[i];
+                while (scanner.hasNextInt()) {
+                    numbers.add(scanner.nextInt());
+                }
+
+
+                scanner.close();
+
+
+                if (numbers.isEmpty()) {
+                    System.out.println("Lista je prazna.");
+                    return;
+                }
+
+                int min = numbers.get(0);
+                int max = numbers.get(0);
+                int minIndex = 0;
+                int maxIndex = 0;
+
+                for (int i = 1; i < numbers.size(); i++) {
+                    if (numbers.get(i) < min) {
+                        min = numbers.get(i);
+                        minIndex = i;
+                    }
+                    if (numbers.get(i) > max) {
+                        max = numbers.get(i);
+                        maxIndex = i;
+                    }
+                }
+
+                numbers.set(minIndex, max);
+                numbers.set(maxIndex, min);
+                
+                System.out.println("Nova lista nakon zamjene: " + numbers);
             }
         }
 
-        // Ispis maksimalne vrijednosti
-        System.out.println("Maksimalna vrijednost u polju je: " + max);
-    }
-}
+
