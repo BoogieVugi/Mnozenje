@@ -6,38 +6,26 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("unesite broj elemenata: ");
-        int brojElemenata = scanner.nextInt();
+        int[] listaBrojeva = new int[5];
 
-        ArrayList<Integer> Lista = new ArrayList<>();
-
-        System.out.println("Unesite elemente liste: ");
-        for (int i = 0; i < brojElemenata; i++){
-            Lista.add(scanner.nextInt());
-        }
-        // OVO DALJE SAM UZ POMOĆ INTERNETA RIJEŠIO
-
-        boolean duplikatPostoji = false;
-
-        for (int i = 0; i < Lista.size(); i++) {
-            for (int j = i + 1; j < Lista.size(); j++) {
-                if (Lista.get(i).equals(Lista.get(j))) {
-                    duplikatPostoji = true;
-                    break;
-                }
-            }
-            if (duplikatPostoji) {
-                break;
-            }
+        System.out.println("Unesite 5 brojeva:");
+        for (int i = 0; i < 5; i++) {
+            listaBrojeva[i] = scanner.nextInt();
         }
 
-        // Ispisi rezultat
-        if (duplikatPostoji) {
-            System.out.println("True - Duplikat postoji");
+        boolean rastuca = rastuca(listaBrojeva);
+
+        if (rastuca) {
+            System.out.println("Lista je sortirana uzlazno.");
         } else {
-            System.out.println("False - Nema duplikata");
+            System.out.println("Lista nije sortirana uzlazno.");
         }
-        scanner.close();
+    }
 
+    public static boolean rastuca(int[] lista) {
+        for (int i = 0; i < lista.length ; i++) {
+
+        }
+        return true;
     }
 }
