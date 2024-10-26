@@ -2,10 +2,11 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         int[] listaBrojeva = new int[5];
 
         System.out.println("Unesite 5 brojeva:");
@@ -13,18 +14,21 @@ public class Main {
             listaBrojeva[i] = scanner.nextInt();
         }
 
-        boolean rastuca = rastuca(listaBrojeva);
+        // Provjera da li je lista uzlazno sortirana
+        boolean sortiranost = rastuća (listaBrojeva);
 
-        if (rastuca) {
+        // Ispis rezultata
+        if (sortiranost) {
             System.out.println("Lista je sortirana uzlazno.");
         } else {
             System.out.println("Lista nije sortirana uzlazno.");
         }
     }
 
-    public static boolean rastuca(int[] lista) {
-        for (int i = 0; i < lista.length ; i++) {
-
+    public static boolean rastuća(int[] broj) {
+        for (int i = 0; i < broj.length - 1; i++) {
+            if (broj[i] > broj[i + 1]) {
+                return false;
         }
         return true;
     }
