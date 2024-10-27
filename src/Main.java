@@ -1,35 +1,36 @@
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+import java.time.chrono.MinguoEra;
 import java.util.Scanner;
 import java.util.ArrayList;
-
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int[] listaBrojeva = new int[5];
+        System.out.println("Unesite rečenicu:");
+        String recenica = scanner.nextLine();
+        String[] rijeci = recenica.split(" ");
 
-        System.out.println("Unesite 5 brojeva:");
-        for (int i = 0; i < 5; i++) {
-            listaBrojeva[i] = scanner.nextInt();
+        ArrayList<String> dugeRijeci = new ArrayList<>();
+        String najduzaRijec = "";
+        int ukupnaDuzina = 0;
+
+        for (int i = 0; i < rijeci.length; i++) {
+            String rijec = rijeci[i];
+            ukupnaDuzina += rijec.length();
+            if (rijec.length() > 5) {
+                dugeRijeci.add(rijec);
+            }
+
+            if (rijec.length() > najduzaRijec.length()) {
+                najduzaRijec = rijec;
+            }
         }
 
-        // Provjera da li je lista uzlazno sortirana
-        boolean sortiranost = rastuća (listaBrojeva);
+        double prosjecnaDuzina = (double) ukupnaDuzina / rijeci.length;
 
-        // Ispis rezultata
-        if (sortiranost) {
-            System.out.println("Lista je sortirana uzlazno.");
-        } else {
-            System.out.println("Lista nije sortirana uzlazno.");
-        }
-    }
-
-    public static boolean rastuća(int[] broj) {
-        for (int i = 0; i < broj.length - 1; i++) {
-            if (broj[i] > broj[i + 1]) {
-                return false;
-        }
-        return true;
+        System.out.println("Riječi dulje od 5 slova: " + dugeRijeci);
+        System.out.println("Najduža riječ: " + najduzaRijec);
+        System.out.printf("Prosječna duljina riječi: %.2f%n", prosjecnaDuzina);
     }
 }
