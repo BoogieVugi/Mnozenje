@@ -2,24 +2,28 @@
 
 import com.sun.jdi.IntegerValue;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        Polaznik polaznik1 = new Polaznik("Ivica", "Ivić");
-        Polaznik polaznik2 = new Polaznik ("Tomsislav", "Vugrnec", 29, "mušk");
-        Polaznik polaznik3 = new Polaznik();
+        System.out.print("Unesite naziv proizvoda: ");
+        String naziv = scanner.nextLine();
 
-        System.out.println("Ime i prezime prvog polaznika je: " + polaznik1.getImePrezime());
+        System.out.print("Unesite cijenu proizvoda: ");
+        BigDecimal cijena = scanner.nextBigDecimal();
 
-        polaznik2.setDob(30);
+        System.out.print("Unesite popust (u postotcima): ");
+        BigDecimal popust = scanner.nextBigDecimal();
 
-        polaznik3.setIme("Branko");
-        polaznik3.setPrezime("Brankić");
+        Proizvod proizvod = new Proizvod(naziv, cijena, popust);
 
+        proizvod.setPopust(popust);
 
+        System.out.println("Konačna cijena proizvoda " + proizvod.getNaziv() + " nakon popusta: " + proizvod.izracunajCijenu());
 
 
     }
