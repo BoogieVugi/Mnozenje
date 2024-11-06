@@ -10,22 +10,29 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Unesite naziv proizvoda: ");
-        String naziv = scanner.nextLine();
+        ArrayList<Student> studenti = new ArrayList<>();
 
-        System.out.print("Unesite cijenu proizvoda: ");
-        BigDecimal cijena = scanner.nextBigDecimal();
+        System.out.print("Unesite ime studenta: ");
+        String ime = scanner.nextLine();
 
-        System.out.print("Unesite popust (u postotcima): ");
-        BigDecimal popust = scanner.nextBigDecimal();
+        System.out.print("Unesite prezime studenta: ");
+        String prezime = scanner.nextLine();
 
-        Proizvod proizvod = new Proizvod(naziv, cijena, popust);
+        System.out.print("Unesite broj indeksa studenta: ");
+        String brojIndeksa = scanner.nextLine();
 
-        proizvod.setPopust(popust);
+        System.out.print("Unesite prosjek ocjena studenta: ");
+        double prosjekOcjena = scanner.nextDouble();
+        scanner.nextLine();
 
-        System.out.println("Konačna cijena proizvoda " + proizvod.getNaziv() + " nakon popusta: " + proizvod.izracunajCijenu());
+        // Kreiranje i dodavanje novog studenta u listu
+        Student student = new Student(ime, prezime, brojIndeksa, prosjekOcjena);
+        studenti.add(student);
 
-
+        // Ispis svih studenata
+        System.out.println("\nPopis svih studenata:");
+        for (Student student : studenti) {
+            System.out.println(student);
     }
 }
 
