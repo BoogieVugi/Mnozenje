@@ -1,19 +1,38 @@
-public class Main {
-    public static void main(String[] args) {
-        Roman roman = new Roman("Ana Karenjina", "Lav Tolstoj", 1878, 864);
-        System.out.println("Naslov romana: " + roman.getNaslov());
-        System.out.println("Stanje prije posudbe: " + roman.getStanje());
-        roman.posudi();
-        System.out.println("Stanje nakon posudbe: " + roman.getStanje());
-        roman.vrati();
-        System.out.println("Stanje nakon vraćanja: " + roman.getStanje());
+import java.math.BigDecimal;
+import java.util.Scanner;
 
-        Strip strip = new Strip("Spider-Man", "Stan Lee", 1963, 32);
-        System.out.println("\nNaslov stripa: " + strip.getNaslov());
-        System.out.println("Stanje prije posudbe: " + strip.getStanje());
-        strip.posudi();
-        System.out.println("Stanje nakon posudbe: " + strip.getStanje());
-        strip.vrati();
-        System.out.println("Stanje nakon vraćanja: " + strip.getStanje());
+public class Main {
+    public static BigDecimal izracunajFaktorijel(int broj) throws IllegalArgumentException {
+        if (broj < 0) {
+            throw new IllegalArgumentException("Faktorijel nije definiran za negativne brojeve.");
+        }
+
+        BigDecimal rezultat = BigDecimal.ONE;
+        for (int i = 1; i <= broj; i++) {
+            rezultat = rezultat.multiply(BigDecimal.valueOf(i));
+        }
+        return rezultat;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            try {
+                System.out.print("Unesite cijeli broj za izračun faktorijela: ");
+                int broj = scanner.nextInt();
+
+                BigDecimal rezultat = izracunajFaktorijel(broj);
+                System.out.println("Faktorijel broja je: " + rezultat);
+                break;
+
+            } catch (NumberFormatException e) {
+                System.out.println("Pogreška: Unos niej broj. Molimo unesite cijeli broj.");
+
+            } catch (IllegalArgumentException e) {
+                System.out.println("Pogreška: " + e.getMessage());
+            }
+        }
+        
     }
 }
