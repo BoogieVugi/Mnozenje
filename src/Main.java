@@ -1,43 +1,19 @@
-
-
-import com.sun.jdi.IntegerValue;
-
-import java.math.BigDecimal;
-import java.util.Scanner;
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Roman roman = new Roman("Ana Karenjina", "Lav Tolstoj", 1878, 864);
+        System.out.println("Naslov romana: " + roman.getNaslov());
+        System.out.println("Stanje prije posudbe: " + roman.getStanje());
+        roman.posudi();
+        System.out.println("Stanje nakon posudbe: " + roman.getStanje());
+        roman.vrati();
+        System.out.println("Stanje nakon vraćanja: " + roman.getStanje());
 
-
-                System.out.println("Unesite iznos za plaćanje: ");
-                double iznos = scanner.nextDouble();
-
-
-                System.out.println("Odaberite metodu plaćanja: ");
-                String metoda = scanner.nextLine();
-
-                Placanje placanje;
-
-
-                switch (metoda) {
-                    case "kartica":
-                        placanje = new KreditnaKartica();
-                        break;
-                    case "gotovina":
-                        placanje = new Gotovina();
-                        break;
-                    case "paypal":
-                        placanje = new PayPal();
-                        break;
-                    default:
-                        System.out.println("Nepoznata metoda plaćanja.");
-                        scanner.close();
-                        return;
-                }
-
-                placanje.platiti(iznos);
-                System.out.println(placanje.getDetalje());
-            }
-        }
+        Strip strip = new Strip("Spider-Man", "Stan Lee", 1963, 32);
+        System.out.println("\nNaslov stripa: " + strip.getNaslov());
+        System.out.println("Stanje prije posudbe: " + strip.getStanje());
+        strip.posudi();
+        System.out.println("Stanje nakon posudbe: " + strip.getStanje());
+        strip.vrati();
+        System.out.println("Stanje nakon vraćanja: " + strip.getStanje());
+    }
+}
