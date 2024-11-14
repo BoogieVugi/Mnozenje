@@ -1,38 +1,23 @@
-import java.math.BigDecimal;
-import java.util.Scanner;
+import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+
+
 
 public class Main {
-    public static BigDecimal izracunajFaktorijel(int broj) throws IllegalArgumentException {
-        if (broj < 0) {
-            throw new IllegalArgumentException("Faktorijel nije definiran za negativne brojeve.");
-        }
+    public static void main(String[] args) throws Exception {
 
-        BigDecimal rezultat = BigDecimal.ONE;
-        for (int i = 1; i <= broj; i++) {
-            rezultat = rezultat.multiply(BigDecimal.valueOf(i));
-        }
-        return rezultat;
-    }
+        Student student1 = new Student("Marko", "Marić", "index123");
+        Student student2 = new Student("Ana", "Marković", "index374");
+        Student student3 = new Student("Toni", "Ivić", "index565");
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        FileWriter writer = new FileWriter("studenti.txt");
+        writer.write(student1.getStudentInfo() + "\n");
+        writer.write(student2.getStudentInfo() + "\n");
+        writer.write(student3.getStudentInfo() + "\n");
+        writer.close();
 
-        while (true) {
-            try {
-                System.out.print("Unesite cijeli broj za izračun faktorijela: ");
-                int broj = scanner.nextInt();
 
-                BigDecimal rezultat = izracunajFaktorijel(broj);
-                System.out.println("Faktorijel broja je: " + rezultat);
-                break;
-
-            } catch (NumberFormatException e) {
-                System.out.println("Pogreška: Unos niej broj. Molimo unesite cijeli broj.");
-
-            } catch (IllegalArgumentException e) {
-                System.out.println("Pogreška: " + e.getMessage());
-            }
-        }
-        
     }
 }
