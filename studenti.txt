@@ -1,3 +1,0 @@
-Ime: Marko, Prezime: Marić, Broj Indexa: index123
-Ime: Ana, Prezime: Marković, Broj Indexa: index374
-Ime: Toni, Prezime: Ivić, Broj Indexa: index565

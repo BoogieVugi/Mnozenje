@@ -1,0 +1,5 @@
+Proizvod: mlijeko, Cijena: 10.0 EUR, Količina: 1
+Proizvod: kruh, Cijena: 5.0 EUR, Količina: 5
+Proizvod: paradajz, Cijena: 56.0 EUR, Količina: 4
+Proizvod: brašno, Cijena: 2.0 EUR, Količina: 5
+Proizvod: pivo, Cijena: 100.0 EUR, Količina: 100
