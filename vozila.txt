@@ -1,0 +1,3 @@
+Automobil,ZG1256BA,BMW,2015,2
+Automobil,MA5467ED,Ford,2018,4
+Motocikl,PU9965EF,Tomos,2020,moped

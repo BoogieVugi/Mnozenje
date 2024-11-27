@@ -1,42 +1,32 @@
-import java.util.Scanner;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        Tvrtka tvrtka = new Tvrtka();
-        Scanner scanner = new Scanner(System.in);
+        EvidencijaVozila evidencija = new EvidencijaVozila();
 
-        System.out.println("Unesite podatke za 3 zaposlenika:");
-        for (int i = 0; i < 3; i++) {
-            try {
-                System.out.print("Ime: ");
-                String ime = scanner.nextLine();
+        Automobil automobil1 = new Automobil("ZG1256BA", "BMW", 2015, 2);
+        Automobil automobil2 = new Automobil("MA5467ED", "Ford", 2018, 4);
+        Motocikl motocikl1 = new Motocikl("PU9965EF", "Tomos", 2020, "moped");
 
-                System.out.print("Prezime: ");
-                String prezime = scanner.nextLine();
+        evidencija.dodajVozilo(automobil1);
+        evidencija.dodajVozilo(automobil2);
+        evidencija.dodajVozilo(motocikl1);
 
-                System.out.print("Plaća: ");
-                double placa = Double.parseDouble(scanner.nextLine());
+        System.out.println("Prikaz svih vozila:");
+        evidencija.prikaziSvaVozila();
 
-                Zaposlenik zaposlenik = new Zaposlenik(ime, prezime, placa);
-                tvrtka.dodajZaposlenika(zaposlenik);
-            } catch (InvalidInputException e) {
-                System.out.println("Greška: " + e.getMessage());
-                i--; // Omogućuje ponovno unos u slučaju greške
-            } catch (NumberFormatException e) {
-                System.out.println("Greška: Plaća mora biti broj.");
-                i--;
-            }
-        }
+        String datoteka = "vozila.txt";
 
-        System.out.println("\nPopis svih zaposlenika:");
-        tvrtka.ispisiZaposlenike();
+        try {
+            evidencija.spremiPodatkeUDatoteku(datoteka);
+            System.out.println("Podaci su spremjleni u datoteku.");
 
-        Zaposlenik najbolji = tvrtka.pronadjiNajvecuPlacu();
-        if (najbolji != null) {
-            System.out.println("\nZaposlenik s najvećom plaćom:");
-            System.out.println(najbolji);
-        } else {
-            System.out.println("\nNema zaposlenika s najvećom plaćom.");
+            EvidencijaVozila novaEvidencija = new EvidencijaVozila();
+            novaEvidencija.ucitajPodatkeIzDatoteke(datoteka);
+            System.out.println("Podaci su ucitani iz datoteke.");
+            novaEvidencija.prikaziSvaVozila();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
