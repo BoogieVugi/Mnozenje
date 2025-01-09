@@ -1,32 +1,50 @@
-import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        EvidencijaVozila evidencija = new EvidencijaVozila();
+        EvidencijaPolaznika evidencija = new EvidencijaPolaznika();
+        Scanner scanner = new Scanner(System.in);
+        int izbor;
 
-        Automobil automobil1 = new Automobil("ZG1256BA", "BMW", 2015, 2);
-        Automobil automobil2 = new Automobil("MA5467ED", "Ford", 2018, 4);
-        Motocikl motocikl1 = new Motocikl("PU9965EF", "Tomos", 2020, "moped");
+        do {
+            System.out.println("Izbornik:");
+            System.out.println("1. Dodaj polaznika");
+            System.out.println("2. Prikaži sve polaznike");
+            System.out.println("3. Izlaz");
+            System.out.print("Odaberi opciju: ");
+            izbor = scanner.nextInt();
+            scanner.nextLine(); // Čisti newline
 
-        evidencija.dodajVozilo(automobil1);
-        evidencija.dodajVozilo(automobil2);
-        evidencija.dodajVozilo(motocikl1);
+            switch (izbor) {
+                case 1:
+                    System.out.print("Unesite ime: ");
+                    String ime = scanner.nextLine();
 
-        System.out.println("Prikaz svih vozila:");
-        evidencija.prikaziSvaVozila();
+                    System.out.print("Unesite prezime: ");
+                    String prezime = scanner.nextLine();
 
-        String datoteka = "vozila.txt";
+                    System.out.print("Unesite email: ");
+                    String email = scanner.nextLine();
 
-        try {
-            evidencija.spremiPodatkeUDatoteku(datoteka);
-            System.out.println("Podaci su spremjleni u datoteku.");
+                    if (evidencija.dodajPolaznika(ime, prezime, email)) {
+                        System.out.println("Polaznik uspješno dodan.");
+                    } else {
+                        System.out.println("Greška: Polaznik s ovom e-mail adresom već postoji!");
+                    }
+                    break;
 
-            EvidencijaVozila novaEvidencija = new EvidencijaVozila();
-            novaEvidencija.ucitajPodatkeIzDatoteke(datoteka);
-            System.out.println("Podaci su ucitani iz datoteke.");
-            novaEvidencija.prikaziSvaVozila();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                case 2:
+                    evidencija.prikaziPolaznike();
+                    break;
+
+                case 3:
+                    System.out.println("Izlaz iz programa.");
+                    break;
+
+                default:
+                    System.out.println("Nepoznata opcija. Pokušajte ponovno.");
+            }
+        } while (izbor != 3);
+
     }
 }
